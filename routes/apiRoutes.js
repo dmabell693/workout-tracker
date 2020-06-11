@@ -10,12 +10,16 @@ module.exports = function(app) {
     app.get("/api/workouts/range", function(req, res) {
         db.Workout.find({}).then(function(dbWorkouts) {
             res.json(dbWorkouts);
+            console.log(dbWorkouts);
         });
     });
 
     app.put("/api/workouts/:id", function(req, res) {
         console.log(req.body);
-        db.Workout.updateOne({ _id: req.params.id }, { body: req.body }).then(function(dbWorkouts) {
+        db.Workout.updateOne(
+            { _id: req.params.id }, 
+            { $push: { exercises: req.body } }
+            ).then(function(dbWorkouts) {
             console.log(dbWorkouts);
           res.json(dbWorkouts);
         });
@@ -28,6 +32,7 @@ module.exports = function(app) {
                 res.send(error);
             } else {
                 res.send(data);
+                console.log(data);
             }
         });
     });
