@@ -3,6 +3,49 @@ const db = require("../models");
 module.exports = function(app) {
     app.get("/api/workouts", function(req, res) {
         db.Workout.find({}).then(function(dbWorkouts) {
+
+            // let lastWorkout = dbWorkouts[(dbWorkouts.length - 1)];
+            // console.log(lastWorkout);
+
+            // let totalDuration = 0;
+            // for (i=0; i<lastWorkout.exercises.length; i++) {
+            //     totalDuration += lastWorkout.exercises[i].duration;
+            //     console.log(totalDuration);
+            // }
+
+            // lastWorkout.totalDuration = totalDuration;
+            // console.log(lastWorkout);
+
+            dbWorkouts.forEach(workout => {
+                let totalDuration = 0;
+                // let totalWeight = 0;
+                // let totalSets = 0;
+                // let totalReps = 0;
+                // let totalDistance = 0;
+                workout.exercises.forEach(exercise => {
+                  //calculate total duration
+                  totalDuration += exercise.duration;
+                  workout.totalDuration = totalDuration;
+
+                //   //calculate total weight
+                //   totalWeight += (exercise.weight * exercise.sets * exercise.reps);
+                //   workout.totalWeight = totalWeight;
+
+                //   //calculate total sets
+                //   totalSets += exercise.sets;
+                //   workout.totalSets = totalSets;
+
+                //   //calculate total reps
+                //   totalReps += (exercise.sets * exercise.reps);
+                //   workout.totalReps = totalReps;
+
+                //   //calculate total distance
+                //   totalDistance += exercise.distance;
+                //   workout.totalDistance = totalDistance;
+                });
+              });
+
+            console.log(dbWorkouts);
             res.json(dbWorkouts);
         });
     });
