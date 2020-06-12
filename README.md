@@ -6,7 +6,6 @@ This app uses Node.js, MongoDB, Mongoose, and Express to deliver a workout track
 
 ## Table of Contents
 
-* [Installation](#Installation)
 * [Usage](#Usage)
 * [License](#License)
 * [Contributing](#Contributing)
@@ -14,12 +13,9 @@ This app uses Node.js, MongoDB, Mongoose, and Express to deliver a workout track
 * [Questions](#Questions)
 
 
-## Installation
+## Usage
 
 To use this app, visit https://blooming-forest-97587.herokuapp.com/.
-
-
-## Usage
 
 To continue a previous workout, select the "Continue Workout" button. To begin a new workout, select the "New Workout" button.
 
